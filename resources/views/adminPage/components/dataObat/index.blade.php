@@ -16,7 +16,7 @@
                     <thead class="text-center">
                         <tr>
                             <th>No.</th>
-                            <th>Nama Obat</th>
+                            <th>Nama Obat</th> 
                             <th>Jenis Obat</th>
                             <th>Harga Satuan</th>
                             <th>Stok</th>

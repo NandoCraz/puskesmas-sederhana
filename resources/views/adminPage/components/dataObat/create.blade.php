@@ -35,25 +35,7 @@
                             @enderror
                         </div>
                         <div class="mb-4">
-                            <label for="harga_satuan">Harga Satuan</label>
-                            <div class="input-group">
-                                <div class="input-group-append">
-                                    <span class="input-group-text">
-                                        Rp.
-                                    </span>
-                                </div>
-                                <input class="form-control @error('harga_satuan') is-invalid @enderror" id="harga_satuan"
-                                    type="text" name="harga_satuan" value="{{ old('harga_satuan') }}" required
-                                    autocomplete="off">
-                            </div>
-                            @error('harga_satuan')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="mb-4">
-                            <label for="stok_obat">Stok</label>
+                            <label for="stok_obat">Stok Obat</label>
                             <input class="form-control @error('stok_obat') is-invalid @enderror" id="stok_obat"
                                 type="number" name="stok_obat" value="{{ old('stok_obat') }}" required autocomplete="off">
                             @error('stok_obat')
@@ -62,6 +44,25 @@
                                 </div>
                             @enderror
                         </div>
+                        <div class="mb-4">
+                            <label for="harga_satuan">Harga Satuan</label>
+                            <div class="input-group">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        Rp.
+                                    </span>
+                                </div>
+                                <input class="form-control @error('harga_satuan') is-invalid @enderror" id="harga_satuan"
+                                    type="number" name="harga_satuan" value="{{ old('harga_satuan') }}" required
+                                    autocomplete="off">
+                            </div>
+                            @error('harga_satuan')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
                         <div class="mb-4">
                             <label for="tanggal_kadaluarsa">Tanggal Kadaluarsa</label>
                             <div class="input-group">
