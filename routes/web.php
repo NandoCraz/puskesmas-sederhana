@@ -32,11 +32,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    $obats = Obat::all();
-
-    return Inertia::render('Dashboard', [
-        'obats' => $obats,
-    ]);
+    return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -51,4 +47,4 @@ Route::resource('/master/data-obat', ObatController::class)->middleware(['admin'
 Route::resource('/master/data-distribusi', DistribusiController::class)->middleware(['admin']);
 Route::resource('/master/data-penerima', PenerimaController::class)->middleware(['admin']);
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

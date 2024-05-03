@@ -1,8 +1,23 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
+import React, { useEffect, useState } from "react";
 
 export default function Dashboard(props) {
-    // console.log(props.obats);
+    const [obats, setObats] = useState([]);
+
+    useEffect(() => {
+        fetchObats();
+    }, []);
+
+    const fetchObats = async () => {
+        try {
+            const response = await axios.get("/api/get-obat"); // Replace with your API endpoint
+            setObats(response.data.obats);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     return (
         <AuthenticatedLayout
             auth={props.auth}
@@ -38,7 +53,7 @@ export default function Dashboard(props) {
                         </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
-                        {props.obats.map((obat) => (
+                        {obats.map((obat) => (
                             <tr key={obat.id}>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     {obat.nama_obat}
@@ -47,7 +62,7 @@ export default function Dashboard(props) {
                                     {obat.jenis_obat}
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    Rp. {obat.harga_satuan}
+                                    Rp. {obat.harga_satuan.toLocaleString()}
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     {obat.stok_obat}
@@ -55,7 +70,6 @@ export default function Dashboard(props) {
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     {obat.tanggal_kadaluarsa}
                                 </td>
-                                {/* Add more table cells for other properties */}
                             </tr>
                         ))}
                     </tbody>

@@ -107,4 +107,12 @@ class ObatController extends Controller
 
         return redirect('/master/data-obat')->with('success', 'Data Obat Berhasil Dihapus');
     }
+
+    public function getObat()
+    {
+        $obats = Obat::all();
+        return response()->json([
+            'obats' => $obats
+        ]);
+    }
 }
