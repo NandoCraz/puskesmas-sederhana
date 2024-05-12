@@ -55,6 +55,10 @@ class DistribusiController extends Controller
             return back()->with('error', 'Jumlah terima tidak boleh melebihi stok obat');
         }
 
+        $obat->update([
+            'stok_obat' => $obat->stok_obat - $data['jumlah_terima']
+        ]);
+
         Distribusi::create($data);
 
         return redirect('/master/data-distribusi')->with('success', 'Data Distribusi Berhasil Ditambahkan');
@@ -107,6 +111,12 @@ class DistribusiController extends Controller
         if ($data['jumlah_terima'] > $obat->stok_obat) {
             return back()->with('error', 'Jumlah terima tidak boleh melebihi stok obat');
         }
+
+        $distribusi = Distribusi::find($id);
+
+        $obat->update([
+            'stok_obat' => $obat->stok_obat + $distribusi->jumlah_terima - $data['jumlah_terima']
+        ]);
 
         Distribusi::find($id)->update($data);
 
